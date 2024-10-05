@@ -666,13 +666,14 @@ function Library:create()
 		Title.TextWrapped = true
 		Title.TextXAlignment = Enum.TextXAlignment.Left
 
-		        local gradient = Instance.new("UIGradient")
-gradient.Color = ColorSequence.new({
-    ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)), -- Cor clara no início
-    ColorSequenceKeypoint.new(0.8, Color3.fromRGB(200, 200, 255)), -- Cor azul no meio
-    ColorSequenceKeypoint.new(1, Color3.fromRGB(150, 150, 255)) -- Cor azul no final
-})
-gradient.Parent = Title
+                  -- Adiciona UIGradient ao texto
+    local textGradient = Instance.new("UIGradient", Title)
+    textGradient.Color = ColorSequence.new({
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)), -- Branco no início
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(100, 100, 100))  -- Mais escuro no final
+    })
+
+		
 
 		UICorner.CornerRadius = UDim.new(0, 6)
 		UICorner.Parent = Tab
