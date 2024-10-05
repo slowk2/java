@@ -980,7 +980,7 @@ function SettingsController:create_slider()
     Dragger.Name = "Dragger"
     Dragger.Parent = Slider
     Dragger.Active = false
-    Dragger.BackgroundColor3 = Color3.fromRGB(0, 150, 255) -- Cor que combina com o gradiente
+    Dragger.BackgroundColor3 = Color3.fromRGB(65, 84, 254) -- Cor que combina com o gradiente
     Dragger.BorderColor3 = Color3.fromRGB(0, 0, 0)
     Dragger.BorderSizePixel = 0
     Dragger.Selectable = false
@@ -1103,7 +1103,7 @@ end
     ScrollingFrame.BorderSizePixel = 0
     ScrollingFrame.Size = UDim2.new(1, 0, 1, 0)
     ScrollingFrame.ZIndex = 5
-    ScrollingFrame.ScrollBarImageColor3 = Color3.fromRGB(65, 84, 254)
+    ScrollingFrame.ScrollBarImageColor3 = Color3.fromRGB(60, 60, 60)
     ScrollingFrame.ScrollBarThickness = 1
     ScrollingFrame.AutomaticCanvasSize = Enum.AutomaticSize.Y
 
