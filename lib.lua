@@ -80,9 +80,23 @@ Library.flags = current_config
 local UIManager = {}
 
 function UIManager.refresh_tabs(Tab: TextButton)
-	TweenService:Create(Tab, TweenInfo.new(0.7, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
-		BackgroundTransparency = 0
-	}):Play()
+    -- Certifique-se de que o UIGradient existe
+    local gradient = Tab:FindFirstChild("UIGradient") or Instance.new("UIGradient", Tab)
+
+    -- Configure o gradiente
+    gradient.Color = ColorSequence.new({
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(71, 86, 242)), -- Cor clara no início
+        ColorSequenceKeypoint.new(0.7, Color3.fromRGB(30, 45, 150)), -- Cor escura ocupa 70% da largura
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(30, 45, 150))   -- Cor escura continua até o final
+    })
+    
+    -- Tweens para a transparência e cor de fundo
+    local tween = TweenService:Create(Tab, TweenInfo.new(0.7, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
+        BackgroundTransparency = 0,
+        BackgroundColor3 = Color3.fromRGB(71, 86, 242) -- Cor de fundo para azul
+    })
+    
+    Play()
 
 	local Title = Tab:FindFirstChild('Title')
 	local Icon = Tab:FindFirstChild('Icon')
