@@ -83,8 +83,8 @@ function UIManager.refresh_tabs(Tab: TextButton)
     -- Cria um gradiente de cor de fundo
     local gradient = Instance.new("UIGradient")
     gradient.Color = ColorSequence.new({
-        ColorSequenceKeypoint.new(0, Color3.fromRGB(58, 71, 202)), -- Cor original do botão de tab
-        ColorSequenceKeypoint.new(0.8, Color3.fromRGB(58, 71, 202)), -- Cor original do botão de tab
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(71, 86, 242)), -- Cor original do botão de tab
+        ColorSequenceKeypoint.new(0.8, Color3.fromRGB(71, 86, 242)), -- Cor original do botão de tab
         ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 150)) -- Azul escuro
     })
     gradient.Parent = Tab
