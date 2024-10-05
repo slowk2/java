@@ -79,14 +79,15 @@ Library.flags = current_config
 
 local UIManager = {}
 
-function UIManager.refresh_tabs(Tab: TextButton)
+ffunction UIManager.refresh_tabs(Tab: TextButton)
     -- Certifique-se de que o UIGradient existe
     local gradient = Tab:FindFirstChild("UIGradient") or Instance.new("UIGradient", Tab)
 
     -- Configure o gradiente
     gradient.Color = ColorSequence.new({
         ColorSequenceKeypoint.new(0, Color3.fromRGB(71, 86, 242)), -- Cor clara no início
-        ColorSequenceKeypoint.new(1.0, Color3.fromRGB(38, 53, 168))  -- Cor escura no final
+        ColorSequenceKeypoint.new(0.7, Color3.fromRGB(38, 53, 168)), -- Cor escura ocupa 70% da largura
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(38, 53, 168)),   -- Cor escura continua até o final
     })
     
     -- Tweens para a transparência e cor de fundo
@@ -96,6 +97,7 @@ function UIManager.refresh_tabs(Tab: TextButton)
     })
     
     tween:Play()
+
 
 	local Title = Tab:FindFirstChild('Title')
 	local Icon = Tab:FindFirstChild('Icon')
@@ -665,12 +667,13 @@ function Library:create()
     Title.TextXAlignment = Enum.TextXAlignment.Left
 
     -- Adiciona um gradiente ao texto
-    local gradient = Instance.new("UIGradient")
-    gradient.Color = ColorSequence.new({
-        ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)), -- Cor clara no início
-        ColorSequenceKeypoint.new(0.7, Color3.fromRGB(150, 150, 255)) -- Cor azul no final
-    })
-    gradient.Parent = Title
+   local gradient = Instance.new("UIGradient")
+gradient.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)), -- Cor clara no início
+    ColorSequenceKeypoint.new(0.7, Color3.fromRGB(200, 200, 255)), -- Cor azul no meio
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(150, 150, 255)) -- Cor azul no final
+})
+gradient.Parent = Title
 
 
 		UICorner.CornerRadius = UDim.new(0, 6)
