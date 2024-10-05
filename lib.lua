@@ -646,22 +646,32 @@ function Library:create()
 		end)
 
 
-		Title.Name = "Title"
-		Title.Parent = Tab
-		Title.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-		Title.BackgroundTransparency = 1.000
-		Title.BorderColor3 = Color3.fromRGB(0, 0, 0)
-		Title.BorderSizePixel = 0
-		Title.Position = UDim2.new(0.3375673, 0, 0.277778059, 0)
-		Title.Size = UDim2.new(0, 75, 0, 12)
-		Title.FontFace = Font.new('rbxasset://fonts/families/GothamSSm.json', Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
-		Title.Text = text
-		Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-		Title.TextScaled = true
-		Title.TextSize = 14.000
-		Title.TextTransparency = 0.8
-		Title.TextWrapped = true
-		Title.TextXAlignment = Enum.TextXAlignment.Left
+		 
+    Title.Name = "Title"
+    Title.Parent = Tab
+    Title.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    Title.BackgroundTransparency = 1.000
+    Title.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Title.BorderSizePixel = 0
+    Title.Position = UDim2.new(0.3375673, 0, 0.277778059, 0)
+    Title.Size = UDim2.new(0, 75, 0, 12)
+    Title.FontFace = Font.new('rbxasset://fonts/families/GothamSSm.json', Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+    Title.Text = text
+    Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+    Title.TextScaled = true
+    Title.TextSize = 14.000
+    Title.TextTransparency = 0.8
+    Title.TextWrapped = true
+    Title.TextXAlignment = Enum.TextXAlignment.Left
+
+    -- Adiciona um gradiente ao texto
+    local gradient = Instance.new("UIGradient")
+    gradient.Color = ColorSequence.new({
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)), -- Cor clara no início
+        ColorSequenceKeypoint.new(0.7, Color3.fromRGB(150, 150, 255)) -- Cor azul no final
+    })
+    gradient.Parent = Title
+
 
 		UICorner.CornerRadius = UDim.new(0, 6)
 		UICorner.Parent = Tab
