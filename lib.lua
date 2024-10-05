@@ -80,9 +80,22 @@ Library.flags = current_config
 local UIManager = {}
 
 function UIManager.refresh_tabs(Tab: TextButton)
+    -- Cria um gradiente de cor de fundo
+    local gradient = Instance.new("UIGradient")
+    gradient.Color = ColorSequence.new({
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 0, 150)), -- Azul escuro
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 100)) -- Azul mais escuro
+    })
+    gradient.Parent = Tab
+
+    -- Adiciona uma sombra ao botão de tab
+    local shadow = Instance.new("UIStroke")
+    shadow.Color = Color3.fromRGB(0, 0, 50) -- Cor da sombra
+    shadow.Thickness = 0.5 -- Espessura da sombra
+    shadow.Parent = Tab
+
     TweenService:Create(Tab, TweenInfo.new(0.7, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
-        BackgroundTransparency = 0,
-        BackgroundColor3 = Color3.fromRGB(0, 0, 255) -- Altera a cor de fundo para azul
+        BackgroundTransparency = 0
     }):Play()
 
 	local Title = Tab:FindFirstChild('Title')
