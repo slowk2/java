@@ -79,25 +79,10 @@ Library.flags = current_config
 
 local UIManager = {}
 
-ffunction UIManager.refresh_tabs(Tab: TextButton)
-    -- Certifique-se de que o UIGradient existe
-    local gradient = Tab:FindFirstChild("UIGradient") or Instance.new("UIGradient", Tab)
-
-    -- Configure o gradiente
-    gradient.Color = ColorSequence.new({
-        ColorSequenceKeypoint.new(0, Color3.fromRGB(71, 86, 242)), -- Cor clara no início
-        ColorSequenceKeypoint.new(0.7, Color3.fromRGB(38, 53, 168)), -- Cor escura ocupa 70% da largura
-        ColorSequenceKeypoint.new(1, Color3.fromRGB(38, 53, 168)),   -- Cor escura continua até o final
-    })
-    
-    -- Tweens para a transparência e cor de fundo
-    local tween = TweenService:Create(Tab, TweenInfo.new(0.7, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
-        BackgroundTransparency = 0,
-        BackgroundColor3 = Color3.fromRGB(71, 86, 242) -- Cor de fundo para azul
-    })
-    
-    tween:Play()
-
+function UIManager.refresh_tabs(Tab: TextButton)
+	TweenService:Create(Tab, TweenInfo.new(0.7, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
+		BackgroundTransparency = 0
+	}):Play()
 
 	local Title = Tab:FindFirstChild('Title')
 	local Icon = Tab:FindFirstChild('Icon')
@@ -648,33 +633,22 @@ function Library:create()
 		end)
 
 
-		 
-    Title.Name = "Title"
-    Title.Parent = Tab
-    Title.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    Title.BackgroundTransparency = 1.000
-    Title.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    Title.BorderSizePixel = 0
-    Title.Position = UDim2.new(0.3375673, 0, 0.277778059, 0)
-    Title.Size = UDim2.new(0, 75, 0, 12)
-    Title.FontFace = Font.new('rbxasset://fonts/families/GothamSSm.json', Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
-    Title.Text = text
-    Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-    Title.TextScaled = true
-    Title.TextSize = 14.000
-    Title.TextTransparency = 0.8
-    Title.TextWrapped = true
-    Title.TextXAlignment = Enum.TextXAlignment.Left
-
-    -- Adiciona um gradiente ao texto
-   local gradient = Instance.new("UIGradient")
-gradient.Color = ColorSequence.new({
-    ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)), -- Cor clara no início
-    ColorSequenceKeypoint.new(0.7, Color3.fromRGB(200, 200, 255)), -- Cor azul no meio
-    ColorSequenceKeypoint.new(1, Color3.fromRGB(150, 150, 255)) -- Cor azul no final
-})
-gradient.Parent = Title
-
+		Title.Name = "Title"
+		Title.Parent = Tab
+		Title.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+		Title.BackgroundTransparency = 1.000
+		Title.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		Title.BorderSizePixel = 0
+		Title.Position = UDim2.new(0.3375673, 0, 0.277778059, 0)
+		Title.Size = UDim2.new(0, 75, 0, 12)
+		Title.FontFace = Font.new('rbxasset://fonts/families/GothamSSm.json', Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+		Title.Text = text
+		Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+		Title.TextScaled = true
+		Title.TextSize = 14.000
+		Title.TextTransparency = 0.8
+		Title.TextWrapped = true
+		Title.TextXAlignment = Enum.TextXAlignment.Left
 
 		UICorner.CornerRadius = UDim.new(0, 6)
 		UICorner.Parent = Tab
