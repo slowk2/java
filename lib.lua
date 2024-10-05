@@ -86,7 +86,7 @@ function UIManager.refresh_tabs(Tab: TextButton)
     -- Configure o gradiente
     gradient.Color = ColorSequence.new({
         ColorSequenceKeypoint.new(0, Color3.fromRGB(71, 86, 242)), -- Cor clara no início
-        ColorSequenceKeypoint.new(1, Color3.fromRGB(50, 65, 180))  -- Cor escura no final
+        ColorSequenceKeypoint.new(0.8, Color3.fromRGB(38, 53, 168))  -- Cor escura no final
     })
     
     -- Tweens para a transparência e cor de fundo
