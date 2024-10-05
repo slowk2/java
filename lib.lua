@@ -80,9 +80,10 @@ Library.flags = current_config
 local UIManager = {}
 
 function UIManager.refresh_tabs(Tab: TextButton)
-	TweenService:Create(Tab, TweenInfo.new(0.7, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
-		BackgroundTransparency = 0
-	}):Play()
+    TweenService:Create(Tab, TweenInfo.new(0.7, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
+        BackgroundTransparency = 0,
+        BackgroundColor3 = Color3.fromRGB(0, 0, 255) -- Altera a cor de fundo para azul
+    }):Play()
 
 	local Title = Tab:FindFirstChild('Title')
 	local Icon = Tab:FindFirstChild('Icon')
