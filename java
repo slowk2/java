@@ -79,40 +79,6 @@ Library.flags = current_config
 
 local UIManager = {}
 
-function UIManager:update_ui_colors()
-    -- Defina as cores do gradiente
-    local gradient_colors = {
-        Color3.fromRGB(65, 84, 254),
-        Color3.fromRGB(47, 62, 198),
-        Color3.fromRGB(37, 50, 168)
-    }
-
-    -- Atualize as cores dos sliders
-    for _, slider in pairs(Library.ui.Background.Sections:GetDescendants()) do
-        if slider:IsA("Frame") and slider.Name == "Slider" then
-            slider.BackgroundColor3 = gradient_colors[1]
-            slider.Dragger.BackgroundColor3 = gradient_colors[2]
-        end
-    end
-
-    -- Atualize as cores dos toggles
-    for _, toggle in pairs(Library.ui.Background.Sections:GetDescendants()) do
-        if toggle:IsA("Frame") and toggle.Name == "Toggle" then
-            toggle.BackgroundColor3 = gradient_colors[1]
-            toggle.ToggleFrame.BackgroundColor3 = gradient_colors[2]
-        end
-    end
-
-    -- Atualize as cores dos módulos
-    for _, module in pairs(Library.ui.Background.Sections:GetDescendants()) do
-        if module:IsA("Frame") and module.Name == "Module" then
-            module.BackgroundColor3 = gradient_colors[1]
-            module.Tab.BackgroundColor3 = gradient_colors[2]
-        end
-    end
-end
-
-
 function UIManager.refresh_tabs(Tab: TextButton)
     -- Certifique-se de que o UIGradient existe
     local gradient = Tab:FindFirstChild("UIGradient") or Instance.new("UIGradient", Tab)
@@ -859,409 +825,418 @@ function Library:create()
 			local SettingsController = {}
 
 			function SettingsController:create_toggle()
-				local Toggle = Instance.new("TextButton")
-				local Title = Instance.new("TextLabel")
-				local UICorner = Instance.new("UICorner")
-				local ToggleFrame = Instance.new("Frame")
-				local UICorner_2 = Instance.new("UICorner")
+    local Toggle = Instance.new("TextButton")
+    local Title = Instance.new("TextLabel")
+    local UICorner = Instance.new("UICorner")
+    local ToggleFrame = Instance.new("Frame")
+    local UICorner_2 = Instance.new("UICorner")
 
-				Toggle.Name = "Toggle"
-				Toggle.Parent = Settings
-				Toggle.BackgroundColor3 = Color3.fromRGB(24, 24, 24)
-				Toggle.BackgroundTransparency = 1
-				Toggle.BorderColor3 = Color3.fromRGB(0, 0, 0)
-				Toggle.BorderSizePixel = 0
-				Toggle.Position = UDim2.new(0.0719927624, 0, 0, 0)
-				Toggle.Size = UDim2.new(0, 174, 0, 20)
-				Toggle.AutoButtonColor = false
-				Toggle.Text = ""
-				Toggle.TextColor3 = Color3.fromRGB(0, 0, 0)
-				Toggle.TextSize = 1.000
-				Toggle.TextTransparency = 1.000
-				Toggle.TextWrapped = true
+    Toggle.Name = "Toggle"
+    Toggle.Parent = Settings
+    Toggle.BackgroundColor3 = Color3.fromRGB(24, 24, 24)
+    Toggle.BackgroundTransparency = 1
+    Toggle.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Toggle.BorderSizePixel = 0
+    Toggle.Position = UDim2.new(0.0719927624, 0, 0, 0)
+    Toggle.Size = UDim2.new(0, 174, 0, 20)
+    Toggle.AutoButtonColor = false
+    Toggle.Text = ""
+    Toggle.TextColor3 = Color3.fromRGB(0, 0, 0)
+    Toggle.TextSize = 1.000
+    Toggle.TextTransparency = 1.000
+    Toggle.TextWrapped = true
 
-				Title.Name = "Title"
-				Title.Parent = Toggle
-				Title.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-				Title.BackgroundTransparency = 1.000
-				Title.BorderColor3 = Color3.fromRGB(0, 0, 0)
-				Title.BorderSizePixel = 0
-				Title.Position = UDim2.new(0.0400152095, 0, 0.1277771, 0)
-				Title.Size = UDim2.new(0, 120, 0, 14)
-				Title.FontFace = Font.new('rbxasset://fonts/families/GothamSSm.json', Enum.FontWeight.Medium, Enum.FontStyle.Normal)
-				Title.Text = self.title
-				Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-				Title.TextSize = 13.000
-				Title.TextTransparency = 0.6
-				Title.TextWrapped = true
-				Title.TextXAlignment = Enum.TextXAlignment.Left
+    Title.Name = "Title"
+    Title.Parent = Toggle
+    Title.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    Title.BackgroundTransparency = 1.000
+    Title.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Title.BorderSizePixel = 0
+    Title.Position = UDim2.new(0.0400152095, 0, 0.1277771, 0)
+    Title.Size = UDim2.new(0, 120, 0, 14)
+    Title.FontFace = Font.new('rbxasset://fonts/families/GothamSSm.json', Enum.FontWeight.Medium, Enum.FontStyle.Normal)
+    Title.Text = self.title
+    Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+    Title.TextSize = 13.000
+    Title.TextTransparency = 0.6
+    Title.TextWrapped = true
+    Title.TextXAlignment = Enum.TextXAlignment.Left
 
-				UICorner.CornerRadius = UDim.new(0, 6)
-				UICorner.Parent = Toggle
+    UICorner.CornerRadius = UDim.new(0, 6)
+    UICorner.Parent = Toggle
 
-				ToggleFrame.Name = "ToggleFrame"
-				ToggleFrame.Parent = Toggle
-				ToggleFrame.Active = true
-				ToggleFrame.BackgroundColor3 = Color3.fromRGB(14, 14, 14)
-				ToggleFrame.BackgroundTransparency = 0.450
-				ToggleFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
-				ToggleFrame.BorderSizePixel = 0
-				ToggleFrame.Position = UDim2.new(0.879999995, 0, 0.16, 0)
-				ToggleFrame.Selectable = true
-				ToggleFrame.Size = UDim2.new(0, 14, 0, 14)
-				ToggleFrame.ZIndex = 0
+    ToggleFrame.Name = "ToggleFrame"
+    ToggleFrame.Parent = Toggle
+    ToggleFrame.Active = true
+    ToggleFrame.BackgroundColor3 = Color3.fromRGB(50, 50, 50) -- Cor de fundo ajustada
+    ToggleFrame.BackgroundTransparency = 0.2
+    ToggleFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    ToggleFrame.BorderSizePixel = 0
+    ToggleFrame.Position = UDim2.new(0.879999995, 0, 0.16, 0)
+    ToggleFrame.Selectable = true
+    ToggleFrame.Size = UDim2.new(0, 14, 0, 14)
+    ToggleFrame.ZIndex = 0
 
-				UICorner_2.CornerRadius = UDim.new(0, 6)
-				UICorner_2.Parent = ToggleFrame
+    UICorner_2.CornerRadius = UDim.new(0, 6)
+    UICorner_2.Parent = ToggleFrame
 
-				local function update_toggle(switch: boolean)
-					if switch then
-						Library.flags[self.flag] = not Library.flags[self.flag]
-					end
+    local function update_toggle(switch: boolean)
+        if switch then
+            Library.flags[self.flag] = not Library.flags[self.flag]
+        end
 
-					if Library.flags[self.flag] then
-						TweenService:Create(Title, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {
-							TextTransparency = 0
-						}):Play()
+        if Library.flags[self.flag] then
+            TweenService:Create(Title, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {
+                TextTransparency = 0
+            }):Play()
 
-						TweenService:Create(Toggle, TweenInfo.new(1, Enum.EasingStyle.Exponential), {
-							BackgroundTransparency = 0.3
-						}):Play()
+            TweenService:Create(Toggle, TweenInfo.new(1, Enum.EasingStyle.Exponential), {
+                BackgroundTransparency = 0.3
+            }):Play()
 
-						TweenService:Create(ToggleFrame, TweenInfo.new(0.8, Enum.EasingStyle.Exponential), {
-							BackgroundTransparency = 0,
-							BackgroundColor3 = Color3.fromRGB(29, 29, 29)
-						}):Play()
-					else
-						TweenService:Create(Title, TweenInfo.new(0.8, Enum.EasingStyle.Exponential), {
-							TextTransparency = 0.6
-						}):Play()
+            TweenService:Create(ToggleFrame, TweenInfo.new(0.8, Enum.EasingStyle.Exponential), {
+                BackgroundTransparency = 0,
+                BackgroundColor3 = Color3.fromRGB(0, 150, 255) -- Cor que combina com o gradiente
+            }):Play()
+        else
+            TweenService:Create(Title, TweenInfo.new(0.8, Enum.EasingStyle.Exponential), {
+                TextTransparency = 0.6
+            }):Play()
 
-						TweenService:Create(Toggle, TweenInfo.new(0.8, Enum.EasingStyle.Exponential), {
-							BackgroundTransparency = 1
-						}):Play()
+            TweenService:Create(Toggle, TweenInfo.new(0.8, Enum.EasingStyle.Exponential), {
+                BackgroundTransparency = 1
+            }):Play()
 
-						TweenService:Create(ToggleFrame, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {
-							BackgroundTransparency = 0.450,
-							BackgroundColor3 = Color3.fromRGB(14, 14, 14)
-						}):Play()
-					end
-				end
+            TweenService:Create(ToggleFrame, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {
+                BackgroundTransparency = 0.2,
+                BackgroundColor3 = Color3.fromRGB(50, 50, 50) -- Cor original
+            }):Play()
+        end
+    end
 
-				if not Library.flags[self.flag] then
-					Library.flags[self.flag] = false
-				else
-					update_toggle(false)
-				end
+    if not Library.flags[self.flag] then
+        Library.flags[self.flag] = false
+    else
+        update_toggle(false)
+    end
 
-				Toggle.MouseButton1Click:Connect(function()
-					update_toggle(true)
+    Toggle.MouseButton1Click:Connect(function()
+        update_toggle(true)
+        ConfigsController.save(game.GameId, Library.flags)
+    end)
 
-					ConfigsController.save(game.GameId, Library.flags)
-				end)
+    Toggle.TouchTap:Connect(function()
+        update_toggle(true)
+        ConfigsController.save(game.GameId, Library.flags)
+    end)
+end
 
-				Toggle.TouchTap:Connect(function()
-					update_toggle(true)
+function SettingsController:create_slider()
+    local Slider = Instance.new("Frame")
+    local UICorner = Instance.new("UICorner")
+    local Value = Instance.new("TextLabel")
+    local Dragger = Instance.new("TextButton")
+    local Hitbox = Instance.new("TextButton")
+    local UICorner_2 = Instance.new("UICorner")
 
-					ConfigsController.save(game.GameId, Library.flags)
-				end)
-			end
+    Slider.Name = "Slider"
+    Slider.Parent = Settings
+    Slider.BackgroundColor3 = Color3.fromRGB(24, 24, 24)
+    Slider.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Slider.BorderSizePixel = 0
+    Slider.Position = UDim2.new(0.0588235296, 0, 0.227272734, 0)
+    Slider.Size = UDim2.new(0, 165, 0, 10)
 
-			function SettingsController:create_slider()
-				local Slider = Instance.new("Frame")
-				local UICorner = Instance.new("UICorner")
-				local Value = Instance.new("TextLabel")
-				local Dragger = Instance.new("TextButton")
-				local Hitbox = Instance.new("TextButton")
-				local UICorner_2 = Instance.new("UICorner")
+    UICorner.CornerRadius = UDim.new(0, 6)
+    UICorner.Parent = Slider
 
-				Slider.Name = "Slider"
-				Slider.Parent = Settings
-				Slider.BackgroundColor3 = Color3.fromRGB(13, 13, 13)
-				Slider.BorderColor3 = Color3.fromRGB(0, 0, 0)
-				Slider.BorderSizePixel = 0
-				Slider.Position = UDim2.new(0.0588235296, 0, 0.227272734, 0)
-				Slider.Size = UDim2.new(0, 165, 0, 10)
+    Value.Name = "Value"
+    Value.Parent = Slider
+    Value.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    Value.BackgroundTransparency = 1.000
+    Value.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Value.BorderSizePixel = 0
+    Value.Position = UDim2.new(0.380386621, 0, 0, 0.5)
+    Value.Size = UDim2.new(0, 40, 0, 10)
+    Value.ZIndex = 2
+    Value.FontFace = Font.new('rbxasset://fonts/families/GothamSSm.json', Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+    Value.Text = self.value
+    Value.TextColor3 = Color3.fromRGB(255, 255, 255)
+    Value.TextScaled = false
+    Value.TextSize = 8.000
+    Value.TextWrapped = true
 
-				UICorner.CornerRadius = UDim.new(0, 6)
-				UICorner.Parent = Slider
+    Hitbox.Name = "Hitbox"
+    Hitbox.Parent = Slider
+    Hitbox.Active = false
+    Hitbox.BackgroundTransparency = 1
+    Hitbox.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Hitbox.BorderSizePixel = 0
+    Hitbox.Selectable = false
+    Hitbox.ZIndex = 2
+    Hitbox.Size = UDim2.new(1, 0, 0, 10)
+    Hitbox.Text = ""
 
-				Value.Name = "Value"
-				Value.Parent = Slider
-				Value.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-				Value.BackgroundTransparency = 1.000
-				Value.BorderColor3 = Color3.fromRGB(0, 0, 0)
-				Value.BorderSizePixel = 0
-				Value.Position = UDim2.new(0.380386621, 0, 0, 0.5)
-				Value.Size = UDim2.new(0, 40, 0, 10)
-				Value.ZIndex = 2
-				Value.FontFace = Font.new('rbxasset://fonts/families/GothamSSm.json', Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
-				Value.Text = self.value
-				Value.TextColor3 = Color3.fromRGB(255, 255, 255)
-				Value.TextScaled = false
-				Value.TextSize = 8.000
-				Value.TextWrapped = true
+    Dragger.Name = "Dragger"
+    Dragger.Parent = Slider
+    Dragger.Active = false
+    Dragger.BackgroundColor3 = Color3.fromRGB(0, 150, 255) -- Cor que combina com o gradiente
+    Dragger.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Dragger.BorderSizePixel = 0
+    Dragger.Selectable = false
+    Dragger.Size = UDim2.new(self.value / 100, 0, 0, 10)
+    Dragger.Text = ""
 
-				Hitbox.Name = "Hitbox"
-				Hitbox.Parent = Slider
-				Hitbox.Active = false
-				Hitbox.BackgroundTransparency = 1
-				Hitbox.BorderColor3 = Color3.fromRGB(0, 0, 0)
-				Hitbox.BorderSizePixel = 0
-				Hitbox.Selectable = false
-				Hitbox.ZIndex = 2
-				Hitbox.Size = UDim2.new(1, 0, 0, 10)
-				Hitbox.Text = ""
+    UICorner_2.CornerRadius = UDim.new(0, 6)
+    UICorner_2.Parent = Dragger
 
-				Dragger.Name = "Dragger"
-				Dragger.Parent = Slider
-				Dragger.Active = false
-				Dragger.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-				Dragger.BorderColor3 = Color3.fromRGB(0, 0, 0)
-				Dragger.BorderSizePixel = 0
-				Dragger.Selectable = false
-				Dragger.Size = UDim2.new(self.value / 100, 0, 0, 10)
-				Dragger.Text = ""
+    local Title = Instance.new("TextLabel")
 
-				UICorner_2.CornerRadius = UDim.new(0, 6)
-				UICorner_2.Parent = Dragger
+    Title.Name = "Title"
+    Title.Parent = Settings
+    Title.BackgroundColor3 = Color3.fromRGB(13, 13, 13)
+    Title.BackgroundTransparency = 1.000
+    Title.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Title.BorderSizePixel = 0
+    Title.Position = UDim2.new(0.0149251306, 0, 1.70000005, 0)
+    Title.Size = UDim2.new(0, 162, 0, 8)
+    Title.ZIndex = 3
+    Title.FontFace = Font.new('rbxasset://fonts/families/GothamSSm.json', Enum.FontWeight.Medium, Enum.FontStyle.Normal)
+    Title.Text = self.title
+    Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+    Title.TextScaled = true
+    Title.TextSize = 12.000
+    Title.TextTransparency = 0.660
+    Title.TextWrapped = true
 
-				local Title = Instance.new("TextLabel")
+    if not Library.flags[self.flag] then
+        Library.flags[self.flag] = self.value
+    else
+        Value.Text = Library.flags[self.flag]
+        Dragger.Size = UDim2.new(Library.flags[self.flag] / 100, 0, 0, 10)
+    end
 
-				Title.Name = "Title"
-				Title.Parent = Settings
-				Title.BackgroundColor3 = Color3.fromRGB(13, 13, 13)
-				Title.BackgroundTransparency = 1.000
-				Title.BorderColor3 = Color3.fromRGB(0, 0, 0)
-				Title.BorderSizePixel = 0
-				Title.Position = UDim2.new(0.0149251306, 0, 1.70000005, 0)
-				Title.Size = UDim2.new(0, 162, 0, 8)
-				Title.ZIndex = 3
-				Title.FontFace = Font.new('rbxasset://fonts/families/GothamSSm.json', Enum.FontWeight.Medium, Enum.FontStyle.Normal)
-				Title.Text = self.title
-				Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-				Title.TextScaled = true
-				Title.TextSize = 12.000
-				Title.TextTransparency = 0.660
-				Title.TextWrapped = true
+    Hitbox.InputBegan:Connect(function(Input)
+        if Input.UserInputType == Enum.UserInputType.MouseButton1 then
+            local mouse = game.Players.LocalPlayer:GetMouse()
+            local running = true
+            
+            local function update_value()
+                local position = mouse.X - Slider.AbsolutePosition.X
+                local percentage = math.clamp(position / Slider.AbsoluteSize.X, 0, 1)
+                Value.Text = math.floor(percentage * 100)
+                Dragger.Size = UDim2.new(percentage, 0, 0, 10)
+                Library.flags[self.flag] = math.floor(percentage * 100)
+            end
 
-				if not Library.flags[self.flag] then
-					Library.flags[self.flag] = self.value
-				else
-					Value.Text = Library.flags[self.flag]
-					Dragger.Size = UDim2.new(Library.flags[self.flag] / 100, 0, 0, 10)
-				end
+            update_value()
 
-				local function update_slider()
-					local output = math.clamp((mouse.X - Slider.AbsolutePosition.X) / Slider.AbsoluteSize.X, 0, 1)
-					local value = math.round(output * 100)
+            local connection
+            connection = mouse.Move:Connect(function()
+                update_value()
+            end)
 
-					Library.flags[self.flag] = value
-					Value.Text = math.round(output * 100)
+            game:GetService("UserInputService").InputEnded:Connect(function(InputEnd)
+                if InputEnd.UserInputType == Enum.UserInputType.MouseButton1 then
+                    running = false
+                    connection:Disconnect()
+                end
+            end)
+        end
+    end)
 
-					TweenService:Create(Dragger, TweenInfo.new(1, Enum.EasingStyle.Exponential), {
-						Size = UDim2.new(output, 0, 0, 10)
-					}):Play()
+    Slider.InputBegan:Connect(function(Input)
+        if Input.UserInputType == Enum.UserInputType.MouseButton1 then
+            local mouse = game.Players.LocalPlayer:GetMouse()
+            local running = true
+            
+            local function update_value()
+                local position = mouse.X - Slider.AbsolutePosition.X
+                local percentage = math.clamp(position / Slider.AbsoluteSize.X, 0, 1)
+                Value.Text = math.floor(percentage * 100)
+                Dragger.Size = UDim2.new(percentage, 0, 0, 10)
+                Library.flags[self.flag] = math.floor(percentage * 100)
+            end
 
-					ConfigsController.save(game.GameId, Library.flags)
-				end
-				local slider_active = false :: boolean
+            update_value()
 
-				local function activate_slider()
-					slider_active = true
+            local connection
+            connection = mouse.Move:Connect(function()
+                update_value()
+            end)
 
-					while slider_active do
-						update_slider()
+            game:GetService("UserInputService").InputEnded:Connect(function(InputEnd)
+                if InputEnd.UserInputType == Enum.UserInputType.MouseButton1 then
+                    running = false
+                    connection:Disconnect()
+                end
+            end)
+        end
+    end)
+end
 
-						task.wait()
-					end
-				end
-
-				Hitbox.MouseButton1Down:Connect(activate_slider)
-				Hitbox.TouchLongPress:Connect(activate_slider)
-
-				UserInputService.InputEnded:Connect(function(input)
-					if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-						slider_active = false
-					end
-				end)
-			end
 			
 			function SettingsController:create_dropdown()
-				local Dropdown = Instance.new("Frame")
-				local UICorner = Instance.new("UICorner")
-				local ScrollingFrame = Instance.new("ScrollingFrame")
-				local UIListLayout = Instance.new("UIListLayout")
-				local UIPadding = Instance.new("UIPadding")
-				local Title_2 = Instance.new("TextLabel")
+    local Dropdown = Instance.new("Frame")
+    local UICorner = Instance.new("UICorner")
+    local ScrollingFrame = Instance.new("ScrollingFrame")
+    local UIListLayout = Instance.new("UIListLayout")
+    local UIPadding = Instance.new("UIPadding")
+    local Title_2 = Instance.new("TextLabel")
 
-				Dropdown.Name = "Dropdown"
-				Dropdown.Parent = Settings
-				Dropdown.BackgroundColor3 = Color3.fromRGB(13, 13, 13)
-				Dropdown.BorderColor3 = Color3.fromRGB(0, 0, 0)
-				Dropdown.BorderSizePixel = 0
-				Dropdown.Position = UDim2.new(0.0588235296, 0, 0, 0)
-				Dropdown.Size = UDim2.new(0, 165, 0, 80)
+    Dropdown.Name = "Dropdown"
+    Dropdown.Parent = Settings
+    Dropdown.BackgroundColor3 = Color3.fromRGB(24, 24, 24) -- Fundo escuro
+    Dropdown.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Dropdown.BorderSizePixel = 0
+    Dropdown.Position = UDim2.new(0.0588235296, 0, 0, 0)
+    Dropdown.Size = UDim2.new(0, 165, 0, 80)
 
-				UICorner.CornerRadius = UDim.new(0, 6)
-				UICorner.Parent = Dropdown
+    UICorner.CornerRadius = UDim.new(0, 6)
+    UICorner.Parent = Dropdown
 
-				ScrollingFrame.Parent = Dropdown
-				ScrollingFrame.Active = true
-				ScrollingFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-				ScrollingFrame.BackgroundTransparency = 1.000
-				ScrollingFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
-				ScrollingFrame.BorderSizePixel = 0
-				ScrollingFrame.Size = UDim2.new(1, 0, 1, 0)
-				ScrollingFrame.ZIndex = 5
-				ScrollingFrame.ScrollBarImageColor3 = Color3.fromRGB(60, 60, 60)
-				ScrollingFrame.BottomImage = ""
-				ScrollingFrame.ScrollBarThickness = 1
-				ScrollingFrame.TopImage = ""
-				ScrollingFrame.AutomaticCanvasSize = Enum.AutomaticSize.Y
+    ScrollingFrame.Parent = Dropdown
+    ScrollingFrame.Active = true
+    ScrollingFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    ScrollingFrame.BackgroundTransparency = 1.000
+    ScrollingFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    ScrollingFrame.BorderSizePixel = 0
+    ScrollingFrame.Size = UDim2.new(1, 0, 1, 0)
+    ScrollingFrame.ZIndex = 5
+    ScrollingFrame.ScrollBarImageColor3 = Color3.fromRGB(60, 60, 60)
+    ScrollingFrame.ScrollBarThickness = 1
+    ScrollingFrame.AutomaticCanvasSize = Enum.AutomaticSize.Y
 
+    local function hide()
+        if ScrollingFrame.Parent == optimized_folder then
+            return
+        end
+        ScrollingFrame.Parent = optimized_folder
+        ScrollingFrame.Visible = false
+    end
 
-				local function hide()
-					if ScrollingFrame.Parent == optimized_folder then
-						return
-					end
+    local function unhide()
+        if ScrollingFrame.Parent == Dropdown then
+            return
+        end
+        ScrollingFrame.Parent = Dropdown
+        ScrollingFrame.Visible = true
+    end
 
-					ScrollingFrame.Parent = optimized_folder
-					ScrollingFrame.Visible = false
-				end
+    Dropdown:GetPropertyChangedSignal("AbsoluteSize"):Connect(function()
+        if Library.disconnected then
+            return
+        end
 
-				local function unhide()
-					if ScrollingFrame.Parent == Dropdown then
-						return
-					end
+        if not Library.can_be_optimized then
+            task.delay(1, unhide)
+            return
+        end
 
-					ScrollingFrame.Parent = Dropdown
-					ScrollingFrame.Visible = true
-				end
+        task.spawn(hide)
+    end)
 
-				Dropdown:GetPropertyChangedSignal("AbsoluteSize"):Connect(function()
-					if Library.disconnected then
-						return
-					end
+    UIListLayout.Parent = ScrollingFrame
+    UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+    UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+    UIListLayout.Padding = UDim.new(0, 6)
 
-					if not Library.can_be_optimized then
-						task.delay(1, unhide)
+    local selected_mod
+    local current_flag = Library.flags[self.flag]
 
-						return
-					end
+    if not current_flag then
+        Library.flags[self.flag] = self.default_flag or nil
+        current_flag = Library.flags[self.flag]
+    end
 
-					task.spawn(hide)
-				end)
+    for _, value in self.mods do
+        local Mode = Instance.new("TextButton")
+        local Title = Instance.new("TextLabel")
+        local UICorner_2 = Instance.new("UICorner")
 
-				UIListLayout.Parent = ScrollingFrame
-				UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
-				UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-				UIListLayout.Padding = UDim.new(0, 6)
+        Mode.Name = "Mode"
+        Mode.Parent = ScrollingFrame
+        Mode.BackgroundColor3 = Color3.fromRGB(24, 24, 24) -- Cor do botão ajustada
+        Mode.BackgroundTransparency = 0.650
+        Mode.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        Mode.BorderSizePixel = 0
+        Mode.Size = UDim2.new(0, 144, 0, 22)
+        Mode.AutoButtonColor = false
+        Mode.Text = ""
+        Mode.TextColor3 = Color3.fromRGB(0, 0, 0)
+        Mode.TextSize = 1.000
+        Mode.TextTransparency = 1.000
 
-				local selected_mod
-				
-				local current_flag = Library.flags[self.flag]
+        Title.Name = "Title"
+        Title.Parent = Mode
+        Title.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+        Title.BackgroundTransparency = 1.000
+        Title.Size = UDim2.new(0, 122, 0, 12)
+        Title.FontFace = Font.new('rbxasset://fonts/families/GothamSSm.json', Enum.FontWeight.Medium, Enum.FontStyle.Normal)
+        Title.Text = value
+        Title.Position = UDim2.new(0, 7, 0, 5)
+        Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+        Title.TextSize = 14.000
+        Title.TextTransparency = 0.3
+        Title.TextXAlignment = Enum.TextXAlignment.Left
 
-				if not current_flag then
-					Library.flags[self.flag] = self.default_flag or nil
-					current_flag = Library.flags[self.flag]
-				end
+        UICorner_2.CornerRadius = UDim.new(0, 6)
+        UICorner_2.Parent = Mode
 
-				for _, value in self.mods do
-					local Mode = Instance.new("TextButton")
-					local Title = Instance.new("TextLabel")
-					local UICorner_2 = Instance.new("UICorner")
+        if current_flag == value then
+            selected_mod = Mode
+            Mode.BackgroundColor3 = Color3.fromRGB(60, 60, 60) -- Cor selecionada
+        end
 
-					Mode.Name = "Mode"
-					Mode.Parent = ScrollingFrame
-					Mode.BackgroundColor3 = Color3.fromRGB(24, 24, 24)
-					Mode.BackgroundTransparency = 0.650
-					Mode.BorderColor3 = Color3.fromRGB(0, 0, 0)
-					Mode.BorderSizePixel = 0
-					Mode.Size = UDim2.new(0, 144, 0, 22)
-					Mode.AutoButtonColor = false
-					Mode.Text = ""
-					Mode.TextColor3 = Color3.fromRGB(0, 0, 0)
-					Mode.TextSize = 1.000
-					Mode.TextTransparency = 1.000
-					Mode.TextWrapped = true
+        Mode.MouseButton1Click:Connect(function()
+            if selected_mod then
+                TweenService:Create(selected_mod, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {
+                    BackgroundColor3 = Color3.fromRGB(24, 24, 24) -- Cor padrão
+                }):Play()
+            end
 
-					Title.Name = "Title"
-					Title.Parent = Mode
-					Title.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-					Title.BackgroundTransparency = 1.000
-					Title.Size = UDim2.new(0, 122, 0, 12)
-					Title.FontFace = Font.new('rbxasset://fonts/families/GothamSSm.json', Enum.FontWeight.Medium, Enum.FontStyle.Normal)
-					Title.Text = value
-					Title.Position = UDim2.new(0, 7, 0, 5)
-					Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-					Title.TextScaled = true
-					Title.TextSize = 14.000
-					Title.TextTransparency = 0.300
-					Title.TextWrapped = true
-					Title.TextXAlignment = Enum.TextXAlignment.Left
+            selected_mod = Mode
+            TweenService:Create(Mode, TweenInfo.new(1.2, Enum.EasingStyle.Exponential), {
+                BackgroundColor3 = Color3.fromRGB(60, 60, 60) -- Cor selecionada
+            }):Play()
 
-					UICorner_2.CornerRadius = UDim.new(0, 6)
-					UICorner_2.Parent = Mode
-					
-					if current_flag == value then
-						selected_mod = Mode
-						
-						Mode.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-					end
+            Library.flags[self.flag] = value
+            ConfigsController.save(game.GameId, Library.flags)
+        end)
 
-					Mode.MouseButton1Click:Connect(function()
-						if selected_mod then
-							TweenService:Create(selected_mod, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {
-								BackgroundColor3 = Color3.fromRGB(24, 24, 24)
-							}):Play()
-						end
+        Mode.TouchTap:Connect(function()
+            if selected_mod then
+                TweenService:Create(selected_mod, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {
+                    BackgroundColor3 = Color3.fromRGB(24, 24, 24)
+                }):Play()
+            end
 
-						selected_mod = Mode
-						
-						TweenService:Create(Mode, TweenInfo.new(1.2, Enum.EasingStyle.Exponential), {
-							BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-						}):Play()
-						
-						Library.flags[self.flag] = value
-						ConfigsController.save(game.GameId, Library.flags)
-					end)
+            selected_mod = Mode
+            TweenService:Create(Mode, TweenInfo.new(1.2, Enum.EasingStyle.Exponential), {
+                BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+            }):Play()
 
-					Mode.TouchTap:Connect(function()
-						if selected_mod then
-							TweenService:Create(selected_mod, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {
-								BackgroundColor3 = Color3.fromRGB(24, 24, 24)
-							}):Play()
-						end
+            Library.flags[self.flag] = value
+            ConfigsController.save(game.GameId, Library.flags)
+        end)
+    end
 
-						selected_mod = Mode
-						
-						TweenService:Create(Mode, TweenInfo.new(1.2, Enum.EasingStyle.Exponential), {
-							BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-						}):Play()
-						
-						Library.flags[self.flag] = value
-						ConfigsController.save(game.GameId, Library.flags)
-					end)
-				end
+    UIPadding.Parent = ScrollingFrame
+    UIPadding.PaddingTop = UDim.new(0, 10)
 
-				UIPadding.Parent = ScrollingFrame
-				UIPadding.PaddingTop = UDim.new(0, 10)
+    Title_2.Name = "Title"
+    Title_2.Parent = Settings
+    Title_2.BackgroundColor3 = Color3.fromRGB(13, 13, 13)
+    Title_2.BackgroundTransparency = 1.000
+    Title_2.Size = UDim2.new(0, 144, 0, 8)
+    Title_2.ZIndex = 2
+    Title_2.FontFace = Font.new('rbxasset://fonts/families/GothamSSm.json', Enum.FontWeight.Medium, Enum.FontStyle.Normal)
+    Title_2.Text = self.title
+    Title_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+    Title_2.TextSize = 12.000
+    Title_2.TextTransparency = 0.66
+end
 
-				Title_2.Name = "Title"
-				Title_2.Parent = Settings
-				Title_2.BackgroundColor3 = Color3.fromRGB(13, 13, 13)
-				Title_2.BackgroundTransparency = 1.000
-				Title_2.Size = UDim2.new(0, 144, 0, 8)
-				Title_2.ZIndex = 2
-				Title_2.FontFace = Font.new('rbxasset://fonts/families/GothamSSm.json', Enum.FontWeight.Medium, Enum.FontStyle.Normal)
-				Title_2.Text = self.title
-				Title_2.TextColor3 = Color3.fromRGB(255, 255, 255)
-				Title_2.TextScaled = true
-				Title_2.TextSize = 12.000
-				Title_2.TextTransparency = 0.660
-				Title_2.TextWrapped = true
-			end
 
 			return SettingsController
 		end
