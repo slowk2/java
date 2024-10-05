@@ -868,7 +868,7 @@ function Library:create()
     ToggleFrame.Name = "ToggleFrame"
     ToggleFrame.Parent = Toggle
     ToggleFrame.Active = true
-    ToggleFrame.BackgroundColor3 = Color3.fromRGB(50, 50, 50) -- Cor de fundo ajustada
+    ToggleFrame.BackgroundColor3 = Color3.fromRGB(65, 84, 254) -- Cor de fundo ajustada
     ToggleFrame.BackgroundTransparency = 0.2
     ToggleFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
     ToggleFrame.BorderSizePixel = 0
@@ -896,7 +896,7 @@ function Library:create()
 
             TweenService:Create(ToggleFrame, TweenInfo.new(0.8, Enum.EasingStyle.Exponential), {
                 BackgroundTransparency = 0,
-                BackgroundColor3 = Color3.fromRGB(0, 150, 255) -- Cor que combina com o gradiente
+                BackgroundColor3 = Color3.fromRGB(65, 84, 254) -- Cor que combina com o gradiente
             }):Play()
         else
             TweenService:Create(Title, TweenInfo.new(0.8, Enum.EasingStyle.Exponential), {
@@ -1103,7 +1103,7 @@ end
     ScrollingFrame.BorderSizePixel = 0
     ScrollingFrame.Size = UDim2.new(1, 0, 1, 0)
     ScrollingFrame.ZIndex = 5
-    ScrollingFrame.ScrollBarImageColor3 = Color3.fromRGB(60, 60, 60)
+    ScrollingFrame.ScrollBarImageColor3 = Color3.fromRGB(65, 84, 254)
     ScrollingFrame.ScrollBarThickness = 1
     ScrollingFrame.AutomaticCanvasSize = Enum.AutomaticSize.Y
 
@@ -1156,7 +1156,7 @@ end
 
         Mode.Name = "Mode"
         Mode.Parent = ScrollingFrame
-        Mode.BackgroundColor3 = Color3.fromRGB(24, 24, 24) -- Cor do botão ajustada
+        Mode.BackgroundColor3 = Color3.fromRGB(65, 84, 254) -- Cor do botão ajustada
         Mode.BackgroundTransparency = 0.650
         Mode.BorderColor3 = Color3.fromRGB(0, 0, 0)
         Mode.BorderSizePixel = 0
@@ -1185,7 +1185,7 @@ end
 
         if current_flag == value then
             selected_mod = Mode
-            Mode.BackgroundColor3 = Color3.fromRGB(60, 60, 60) -- Cor selecionada
+            Mode.BackgroundColor3 = Color3.fromRGB(65, 84, 254) -- Cor selecionada
         end
 
         Mode.MouseButton1Click:Connect(function()
@@ -1197,7 +1197,7 @@ end
 
             selected_mod = Mode
             TweenService:Create(Mode, TweenInfo.new(1.2, Enum.EasingStyle.Exponential), {
-                BackgroundColor3 = Color3.fromRGB(60, 60, 60) -- Cor selecionada
+                BackgroundColor3 = Color3.fromRGB(65, 84, 254) -- Cor selecionada
             }):Play()
 
             Library.flags[self.flag] = value
@@ -1213,7 +1213,7 @@ end
 
             selected_mod = Mode
             TweenService:Create(Mode, TweenInfo.new(1.2, Enum.EasingStyle.Exponential), {
-                BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+                BackgroundColor3 = Color3.fromRGB(65, 84, 254)
             }):Play()
 
             Library.flags[self.flag] = value
