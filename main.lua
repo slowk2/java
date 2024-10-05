@@ -96,7 +96,7 @@ function UIManager.refresh_tabs(Tab: TextButton)
         BackgroundColor3 = Color3.fromRGB(71, 86, 242) -- Cor de fundo para azul
     })
     
-    Play()
+    tween:Play()
 
 	local Title = Tab:FindFirstChild('Title')
 	local Icon = Tab:FindFirstChild('Icon')
