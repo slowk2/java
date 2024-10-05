@@ -85,8 +85,8 @@ function UIManager.refresh_tabs(Tab: TextButton)
 
     -- Configure o gradiente
     gradient.Color = ColorSequence.new({
-        ColorSequenceKeypoint.new(0, Color3.fromRGB(65, 84, 254)), -- Cor clara no início
-        ColorSequenceKeypoint.new(0.8, Color3.fromRGB(47, 62, 198)), -- Cor escura ocupa 70% da largura
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(65, 84, 253)), -- Cor clara no início
+        ColorSequenceKeypoint.new(0.9, Color3.fromRGB(47, 62, 198)), -- Cor escura ocupa 70% da largura
         ColorSequenceKeypoint.new(1, Color3.fromRGB(37, 50, 168))   -- Cor escura continua até o final
     })
     
@@ -363,14 +363,7 @@ function Library:create()
 	Title.TextSize = 14
 	Title.TextWrapped = true
 
-        local gradient = Instance.new("UIGradient")
-gradient.Color = ColorSequence.new({
-    ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)), -- Cor clara no início
-    ColorSequenceKeypoint.new(0.8, Color3.fromRGB(200, 200, 255)), -- Cor azul no meio
-    ColorSequenceKeypoint.new(1, Color3.fromRGB(150, 150, 255)) -- Cor azul no final
-})
-gradient.Parent = Title
-
+    
 	Safemode_UICorner.CornerRadius = UDim.new(0, 6)
 	Safemode_UICorner.Parent = Safemode
 
@@ -671,6 +664,13 @@ gradient.Parent = Title
 		Title.TextTransparency = 0.8
 		Title.TextWrapped = true
 		Title.TextXAlignment = Enum.TextXAlignment.Left
+
+               local gradient = Instance.new("UIGradient")
+    gradient.Color = ColorSequence.new({
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)), -- Cor clara no início
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(150, 150, 255)) -- Cor azul no final
+    })
+    gradient.Parent = Title
 
 		UICorner.CornerRadius = UDim.new(0, 6)
 		UICorner.Parent = Tab
